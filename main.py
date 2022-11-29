@@ -6,6 +6,7 @@ from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_option,create_choice
 from discord.utils import get
 from discord.ext import commands,tasks
+from keep_alive import keep_alive
 intents = discord.Intents().default()
 intents.members = True
 bot = commands.Bot(command_prefix="!", description="bot test")
@@ -235,6 +236,7 @@ async def on_ready():
     print("started!")
     print("bot ready !")
     await bot.change_presence(activity=discord.Game(name="make your server awesone !"))
+keep_alive()
 try:
   bot.run(os.environ["token"])
 except discord.errors.HTTPException:
